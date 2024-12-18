@@ -21,12 +21,19 @@ player_x = screen_width // 2 - player_width // 2
 player_y = screen_height - player_height - 20
 player_speed = 10
 
-obstacle1_width = 120
-obstacle1_height = 30
+obstacle1_width = 80
+obstacle1_height = 50
 obstacle1_x = random.randint(0, screen_width - obstacle1_width)
 obstacle1_y = -obstacle1_height
-obstacle1_speed = 3
-obstacle1_speed_increase = 0.3
+obstacle1_speed = 4
+obstacle1_speed_increase = 0.2
+
+obstacle2_width = 120
+obstacle2_height = 30
+obstacle2_x = random.randint(0, screen_width - obstacle2_width)
+obstacle2_y = -obstacle2_height
+obstacle2_speed = 3
+obstacle2_speed_increase = 0.3
 
 coin_radius = 20
 coin_x = random.randint(coin_radius, screen_width - coin_radius)
@@ -57,6 +64,9 @@ while running:
                 obstacle1_x = random.randint(0, screen_width - obstacle1_width)
                 obstacle1_y = -obstacle1_height
                 obstacle1_speed = 3
+                obstacle2_x = random.randint(0, screen_width - obstacle2_width)
+                obstacle2_y = -obstacle2_height
+                obstacle2_speed = 3
                 coin_x = random.randint(coin_radius, screen_width - coin_radius)
                 coin_y = -coin_radius
                 coin_speed = 2
@@ -74,6 +84,12 @@ while running:
             obstacle1_y = -obstacle1_height
             obstacle1_speed += obstacle1_speed_increase
             
+        obstacle2_y += obstacle2_speed
+        if obstacle2_y > screen_height:
+            obstacle2_x = random.randint(0, screen_width - obstacle2_width)
+            obstacle2_y = -obstacle2_height
+            obstacle2_speed += obstacle2_speed_increase
+            
         coin_y += coin_speed
         if coin_y > screen_height:
             coin_x = random.randint(coin_radius, screen_width - coin_radius)
@@ -81,7 +97,9 @@ while running:
             coin_speed += coin_speed_increase
             
         if player_x < obstacle1_x + obstacle1_width and player_x + player_width > obstacle1_x and \
-           player_y < obstacle1_y + obstacle1_height and player_y + player_height > obstacle1_y:
+           player_y < obstacle1_y + obstacle1_height and player_y + player_height > obstacle1_y or \
+           player_x < obstacle2_x + obstacle2_width and player_x + player_width > obstacle2_x and \
+           player_y < obstacle2_y + obstacle2_height and player_y + player_height > obstacle2_y:
             game_over = True
             
         if player_x < coin_x + coin_radius and player_x + player_width > coin_x and \
@@ -110,6 +128,7 @@ while running:
     else:
         pygame.draw.rect(screen, light_gray, (player_x, player_y, player_width, player_height))
         pygame.draw.rect(screen, red, (obstacle1_x, obstacle1_y, obstacle1_width, obstacle1_height))
+        pygame.draw.rect(screen, white, (obstacle2_x, obstacle2_y, obstacle2_width, obstacle2_height))
         pygame.draw.circle(screen, yellow, (coin_x, coin_y), coin_radius)
         
         score_text = normal_font.render(f"Score : {score}", True, dark_gray)
