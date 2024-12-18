@@ -40,3 +40,13 @@ score = 0
 
 normal_font = pygame.font.Font(None, 40)
 game_over_font = pygame.font.Font(None, 80)
+
+dark_mode = True
+
+running = True
+game_over = False
+
+while running:
+    pass
+
+pygame.quit()
