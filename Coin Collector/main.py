@@ -112,7 +112,7 @@ while running:
         pygame.draw.rect(screen, red, (obstacle1_x, obstacle1_y, obstacle1_width, obstacle1_height))
         pygame.draw.circle(screen, yellow, (coin_x, coin_y), coin_radius)
         
-        score_text = normal_font.render(f"Final Score : {score}", True, dark_gray)
+        score_text = normal_font.render(f"Score : {score}", True, dark_gray)
         screen.blit(score_text, (10, 10))
         
     pygame.display.update()
