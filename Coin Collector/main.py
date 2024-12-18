@@ -29,7 +29,7 @@ obstacle_speed = 3
 obstacle_speed_increase = 0.3
 
 coin_radius = 20
-coin_x = random.randint(0, screen_width - obstacle_width)
-coin_y = -obstacle_height
-coin_speed = 3
+coin_x = random.randint(coin_radius, screen_width - coin_radius)
+coin_y = -coin_radius
+coin_speed = 2
 coin_speed_increase = 0.3
