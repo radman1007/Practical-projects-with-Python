@@ -33,3 +33,10 @@ coin_x = random.randint(coin_radius, screen_width - coin_radius)
 coin_y = -coin_radius
 coin_speed = 2
 coin_speed_increase = 0.3
+
+clock = pygame.time.Clock()
+
+score = 0
+
+normal_font = pygame.font.Font(None, 40)
+game_over_font = pygame.font.Font(None, 80)
