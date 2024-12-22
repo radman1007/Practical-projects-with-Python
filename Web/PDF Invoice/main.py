@@ -1,3 +1,4 @@
-import jinja2
+from jinja2 import Environment, FileSystemLoader
 import jdatetime
 
+env = Environment(loader=FileSystemLoader("templates"))
