@@ -6,4 +6,6 @@ template = env.get_template("index.html")
 output = template.render(name="index")
 with open(r"templates/new-template.html", mode="w", encoding='utf-8') as tm:
     tm.write(output)
-    
+
+wkhtmltopdf = r""
+file = r"templates/new-template.html"
