@@ -2,7 +2,6 @@ import requests
 from .data import USER_AGENT
 
 def fetch_incredible_products():
-    number =1
     headers = {
         "User-Agent": USER_AGENT
     }
@@ -47,9 +46,6 @@ def fetch_incredible_products():
                 "discount" : item['default_variant']['price']['discount_percent'],
                 "timer" : timer,
             }
-            if number == 1:
-                print(product)
-                break
             items.append(product)
     return items
 
