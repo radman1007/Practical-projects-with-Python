@@ -30,7 +30,6 @@ def fetch_incredible_products():
             resp2 = requests.get(f"https://api.digikala.com/v1/product/{item['id']}/seller-vouchers/", params={"productId" : item['id']}, headers=headers)
             resp2.raise_for_status()
             detail_data = resp2.json()
-            print(detail_data)
             try:
                 timer = item['default_variant']['price']['timer']
             except:
@@ -43,7 +42,7 @@ def fetch_incredible_products():
                 "image_url" : item['images']['main']['url'][0],
                 "name" : item['title_fa'] or item['title_en'],
                 "text" : detail_data['data']['product']['description'],
-                "link" : '/'.join(item['url']['uri'].split('/')[:3]) + item['title_fa'] or item['title_en'],
+                "link" : "https://www.digikala.com/" + '/'.join(item['url']['uri'].split('/')[:3]) + item['title_fa'] or item['title_en'],
                 "shop_name" : item['default_variant']['seller']['title'],
                 "old_price" : item['default_variant']['price']['rrp_price'],
                 "final_price" : item['default_variant']['price']['selling_price'],
