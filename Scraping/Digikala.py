@@ -1,12 +1,10 @@
 import requests
 import csv
+from .data import *
 
 def fetch_incredible_products():
     headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) "
-            "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1"
-        )
+        "User-Agent": USER_AGENT,
     }
     base_url = "https://api.digikala.com/v1/incredible-offers/products/"
     params = {"has_selling_stock": 1, "q": None, "page": 1}
